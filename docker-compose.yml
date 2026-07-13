@@ -43,7 +43,7 @@ services:
   producer-service:
     build:
       context: ./str.producer
-    container-name: kafka-producer
+    container_name: kafka-producer
     networks:
       - broker-kafka
     depends_on:
