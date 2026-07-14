@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 @Service
 @Slf4j
 public class StringProducerService {
@@ -13,7 +15,8 @@ public class StringProducerService {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String message){
-        kafkaTemplate.send("str-topic", message).whenComplete((result, ex) -> {
+        int partition = ThreadLocalRandom.current().nextInt(2);
+        kafkaTemplate.send("str-topic",partition,null, message).whenComplete((result, ex) -> {
 
             if(ex != null){
                 log.error("Error , al enviar el mensaje: {}", ex.getMessage());
