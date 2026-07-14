@@ -16,6 +16,9 @@ public class StringProducerService {
 
     public void sendMessage(String message){
         int partition = ThreadLocalRandom.current().nextInt(2);
+
+        log.info("PARTICION ELEGIDA: {}", partition);
+
         kafkaTemplate.send("str-topic",partition,null, message).whenComplete((result, ex) -> {
 
             if(ex != null){
