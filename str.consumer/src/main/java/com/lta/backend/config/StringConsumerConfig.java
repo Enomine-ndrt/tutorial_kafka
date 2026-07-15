@@ -1,6 +1,7 @@
 package com.lta.backend.config;
 
 import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -15,7 +16,7 @@ import org.springframework.kafka.listener.RecordInterceptor;
 
 import java.util.HashMap;
 
-@Slf4j
+@Log4j2
 @Configuration
 public class StringConsumerConfig {
 
