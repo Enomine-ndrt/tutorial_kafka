@@ -11,19 +11,19 @@ public class StrConsumerListener {
 
     @KafkaListener(groupId = "group-1",
             topicPartitions = @TopicPartition(topic = "str-topic", partitions = {"0"})
-            , containerFactory = "strContainerFactory")
+            , containerFactory = "validMessageContainerFactory")
     public void listener1(String message){
         log.info("LISTENER ::: Recibiendo un mensaje {} ", message);
     }
 
     @KafkaListener(groupId = "group-1",
             topicPartitions = @TopicPartition(topic = "str-topic", partitions = {"1"})
-            , containerFactory = "strContainerFactory")
+            , containerFactory = "validMessageContainerFactory")
     public void listener2(String message){
         log.info("LISTENER2 ::: Recibiendo un mensaje {} ", message);
     }
 
-    @KafkaListener(groupId = "group-2", topics = "str-topic", containerFactory = "strContainerFactory")
+    @KafkaListener(groupId = "group-2", topics = "str-topic", containerFactory = "validMessageContainerFactory")
     public void listener3(String message){
         log.info("LISTENER3 ::: Recibiendo un mensaje {} ", message);
     }
