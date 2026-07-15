@@ -42,6 +42,8 @@ public class StringConsumerConfig {
 
     private RecordInterceptor<String, String>  validMessage(){
         return (record, consumer) ->{
+            log.info("INTERCEPTOR EJECUTADO");
+            log.info("VALOR: {}", record.value());
             if(record.value().contains("Suscribete")){
                 log.info("Contiene la palabra Suscribete");
                 return record;
